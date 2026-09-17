@@ -1,0 +1,627 @@
+<!doctype html>
+<!-- web-market 스타터: 가상 도자기몰 「결」. 브랜드·P 배열·CATS·문구·색 토큰만 바꿔서 시작한다. 사진은 img/<P.img>.jpg -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>결 GYEOL — 손으로 빚은 식탁</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="결 GYEOL · 이천 작업실에서 한 점씩 빚는 생활 도자기. 공기, 접시, 찻잔, 달항아리.">
+<meta name="theme-color" content="#f4f1ea">
+<meta property="og:title" content="결 GYEOL — 손으로 빚은 식탁">
+<meta property="og:description" content="이천 작업실에서 한 점씩 빚는 생활 도자기">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f4f1ea'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' font-family='serif' fill='%239a4a2a'%3E결%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@300;400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* 스타일: 에디토리얼 — 세리프 + 큰 사진, 잡지 지면. radius 타이트(2px) 계열 */
+:root{
+  --bg:#f4f1ea; --bg-2:#ebe6db; --bg-3:#e2dccd;
+  --ink-1:rgba(34,28,22,.94); --ink-2:rgba(34,28,22,.72); --ink-3:rgba(34,28,22,.5); --ink-4:rgba(34,28,22,.3);
+  --line:rgba(34,28,22,.14); --line-soft:rgba(34,28,22,.08);
+  --rust:#9a4a2a; --rust-hi:#b35d3a;
+  --serif:'Noto Serif KR',serif; --serif-en:'Cormorant Garamond',Georgia,serif;
+  --sans:'IBM Plex Sans KR',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(0,0,.2,1); --ease-expo:cubic-bezier(.16,1,.3,1);
+  --r:2px; --w:1320px; --g:clamp(16px,4.4vw,56px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink-1);font-family:var(--sans);font-size:14.5px;line-height:1.7;font-weight:300;
+  letter-spacing:-.01em;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+img{display:block;max-width:100%}
+::selection{background:rgba(154,74,42,.2)}
+:focus-visible{outline:1px solid var(--rust);outline-offset:3px}
+.wrap{max-width:var(--w);margin:0 auto;padding-inline:var(--g)}
+.label{font-size:12px;letter-spacing:0;color:var(--ink-3)}
+.serif{font-family:var(--serif)}
+.en{font-family:var(--serif-en);font-style:italic}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.03em;margin:0}
+.won::after{content:"원";margin-left:1px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ── 공지 · 헤더 ── */
+.notice{background:var(--ink-1);color:var(--bg);text-align:center;font-size:12px;padding:7px 12px;letter-spacing:0}
+header.top{position:sticky;top:0;z-index:50;background:rgba(244,241,234,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px}
+.top nav{display:flex;gap:22px;font-size:13px}
+.top nav a{color:var(--ink-2);transition:color 160ms var(--ease)}
+.top nav a:hover,.top nav a.on{color:var(--ink-1)}
+.logo{display:flex;align-items:baseline;gap:8px;font-family:var(--serif);font-size:22px;letter-spacing:-.02em}
+.logo small{font-family:var(--serif-en);font-size:15px;letter-spacing:.2em;color:var(--ink-3)}
+.tools{display:flex;justify-content:flex-end;gap:4px}
+.icon-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px;font-size:13px;color:var(--ink-2);border-radius:var(--r);transition:background 160ms var(--ease)}
+.icon-btn:hover{background:var(--line-soft);color:var(--ink-1)}
+.icon-btn svg{width:18px;height:18px}
+.count{font-family:var(--mono);font-size:11px;min-width:18px;height:18px;border-radius:9px;background:var(--rust);color:var(--bg);display:inline-grid;place-items:center;padding:0 5px}
+.count[data-n="0"]{background:var(--ink-4)}
+.menu-btn{display:none}
+@media (max-width:760px){
+  .top .wrap{grid-template-columns:auto 1fr auto}
+  .top nav{display:none}
+  .menu-btn{display:inline-flex}
+  .logo{justify-content:center}
+  .logo small{display:none}
+  .icon-btn .txt{display:none}
+}
+.mnav{position:fixed;inset:0;z-index:80;background:var(--bg);padding:84px var(--g) 32px;display:flex;flex-direction:column;gap:2px;
+  transform:translateY(-100%);visibility:hidden;transition:transform 480ms var(--ease-expo),visibility 0s 480ms}
+.mnav.open{transform:none;visibility:visible;transition-delay:0s}
+.mnav a{font-family:var(--serif);font-size:30px;letter-spacing:-.03em;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+.mnav .close{position:absolute;top:14px;right:var(--g)}
+
+/* ── 페이지 전환 ── */
+main{min-height:70vh}
+.view{animation:in 480ms var(--ease-expo)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity 800ms var(--ease-expo),transform 800ms var(--ease-expo)}
+.rv.in{opacity:1;transform:none}
+
+/* ── 홈: 마스트헤드 ── */
+.mast{display:flex;justify-content:space-between;gap:12px;padding:18px 0 14px;border-bottom:1px solid var(--ink-1);flex-wrap:wrap}
+.hero{display:grid;grid-template-columns:5fr 7fr;gap:clamp(20px,4vw,56px);padding:clamp(28px,5vw,64px) 0 clamp(40px,7vw,96px);align-items:end}
+.hero h1{font-size:clamp(44px,7.4vw,112px);line-height:.98;font-weight:300}
+.hero h1 em{font-style:normal;color:var(--rust)}
+.hero .lede{margin:28px 0 0;max-width:34ch;font-size:15px;color:var(--ink-2)}
+.hero .cta{display:flex;gap:8px;margin-top:28px;flex-wrap:wrap}
+.hero figure{margin:0;position:relative}
+.hero figure img{width:100%;aspect-ratio:4/3.1;object-fit:cover;border-radius:var(--r)}
+.hero figcaption{display:flex;justify-content:space-between;margin-top:8px}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.hero figure{order:-1}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:var(--r);font-size:14px;font-weight:400;white-space:nowrap;
+  transition:background 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease),transform 160ms var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn.dark{background:var(--ink-1);color:var(--bg)}
+.btn.dark:hover{background:var(--rust)}
+.btn.ghost{border:1px solid var(--ink-1)}
+.btn.ghost:hover{background:var(--ink-1);color:var(--bg)}
+.btn.full{width:100%}
+.btn[disabled]{opacity:.4;pointer-events:none}
+
+/* 섹션 헤드 */
+.sec{padding:clamp(56px,9vw,120px) 0;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;margin-bottom:clamp(24px,4vw,48px)}
+.sec-head .no{font-family:var(--serif-en);font-size:15px;color:var(--rust)}
+.sec-head h2{font-size:clamp(28px,4vw,48px);line-height:1.1}
+.sec-head a{font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--ink-4);padding-bottom:2px}
+@media (max-width:560px){.sec-head{grid-template-columns:1fr}.sec-head a{justify-self:start}}
+
+/* 이번 호의 그릇: 비대칭 지면 */
+.feature{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,32px);align-items:start}
+.feature .card:nth-child(1){grid-column:1/8}
+.feature .card:nth-child(2){grid-column:9/13;margin-top:clamp(40px,10vw,160px)}
+.feature .card:nth-child(3){grid-column:3/7;margin-top:-8%}
+.feature .quote{grid-column:8/13;align-self:center;font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);line-height:1.5;letter-spacing:-.03em;font-weight:300}
+.feature .quote cite{display:block;margin-top:16px;font-style:normal}
+@media (max-width:760px){
+  .feature .card .meta{flex-direction:column;gap:2px}
+  .feature{grid-template-columns:1fr 1fr}
+  .feature .card:nth-child(1){grid-column:1/3}
+  .feature .card:nth-child(2),.feature .card:nth-child(3){grid-column:auto;margin-top:0}
+  .feature .quote{grid-column:1/3;padding-top:12px}
+}
+
+/* 상품 카드 */
+.card{display:block;position:relative}
+.card .ph{position:relative;overflow:hidden;background:var(--bg-2);border-radius:var(--r)}
+.card .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 900ms var(--ease-expo)}
+.card:hover .ph img{transform:scale(1.035)}
+.card .quick{position:absolute;left:10px;right:10px;bottom:10px;height:40px;background:rgba(244,241,234,.94);border-radius:var(--r);font-size:13px;
+  opacity:0;transform:translateY(8px);transition:opacity 160ms var(--ease),transform 160ms var(--ease)}
+.card:hover .quick,.card .quick:focus-visible{opacity:1;transform:none}
+@media (hover:none){.card .quick{display:none}}
+.card .meta{display:flex;justify-content:space-between;gap:10px;margin-top:12px;align-items:baseline}
+.card .name{font-family:var(--serif);font-size:16px;letter-spacing:-.02em;line-height:1.35}
+.card .sub{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+.card .price{font-family:var(--mono);font-size:13px;white-space:nowrap}
+.tag{position:absolute;top:10px;left:10px;font-size:11.5px;background:var(--bg);padding:3px 7px;border-radius:var(--r)}
+.tag.soldout{background:var(--ink-1);color:var(--bg)}
+
+/* 작업실 이야기 */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
+.story img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.story h2{font-size:clamp(30px,4.2vw,56px);line-height:1.15;font-weight:300}
+.story .cols{columns:2 220px;column-gap:28px;margin-top:28px;color:var(--ink-2)}
+.story .cols p{margin:0 0 14px}
+.story .cols p:first-child::first-letter{font-family:var(--serif);float:left;font-size:54px;line-height:.9;padding:4px 8px 0 0;color:var(--rust)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:32px}
+.facts div{padding:16px 0}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,36px);letter-spacing:-.03em}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+
+/* 관리법 */
+.care{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink-1)}
+.care div{padding:20px 20px 20px 0;border-right:1px solid var(--line)}
+.care div+div{padding-left:20px}
+.care div:last-child{border-right:0}
+.care h3{font-size:18px;margin:8px 0 6px}
+.care p{margin:0;color:var(--ink-2);font-size:13.5px}
+@media (max-width:760px){.care{grid-template-columns:1fr 1fr}.care div{border-right:0;border-bottom:1px solid var(--line);padding:18px 12px 18px 0!important}}
+
+.letter{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;padding:clamp(40px,6vw,72px) 0}
+.letter h2{font-size:clamp(26px,3.4vw,40px);line-height:1.2}
+.field-row{display:flex;border-bottom:1px solid var(--ink-1)}
+.field-row input{flex:1;min-width:0;border:0;background:none;padding:12px 0;outline:0;font-size:15px}
+@media (max-width:760px){.letter{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--ink-1);padding:40px 0 56px;font-size:12.5px;color:var(--ink-3)}
+footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .big{font-family:var(--serif);font-size:clamp(56px,12vw,160px);letter-spacing:-.04em;line-height:.9;color:var(--ink-1);margin:0 0 28px;font-weight:300}
+footer p{margin:2px 0}
+
+/* ── 목록 ── */
+.page-head{padding:clamp(32px,5vw,64px) 0 24px;border-bottom:1px solid var(--ink-1)}
+.page-head h1{font-size:clamp(40px,6vw,80px);line-height:1;font-weight:300}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);position:sticky;top:60px;background:var(--bg);z-index:10}
+.chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.chips::-webkit-scrollbar{display:none}
+.chip{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r);font-size:13px;white-space:nowrap;color:var(--ink-2);transition:all 160ms var(--ease)}
+.chip:hover{border-color:var(--ink-3)}
+.chip.on{background:var(--ink-1);color:var(--bg);border-color:var(--ink-1)}
+.chip sup{font-family:var(--mono);font-size:9px;margin-left:3px;opacity:.6}
+select.sort{border:0;background:none;font-size:13px;color:var(--ink-2);padding:6px 2px;cursor:pointer;flex-shrink:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px clamp(14px,2vw,28px);padding:32px 0 80px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{gap:28px 12px}.card .meta{flex-direction:column;gap:2px}}
+.empty{padding:80px 0;text-align:center;color:var(--ink-3)}
+
+/* ── 상세 ── */
+.crumb{padding:18px 0;font-size:12.5px;color:var(--ink-3)}
+.crumb a:hover{color:var(--ink-1)}
+.pdp{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,72px);padding-bottom:80px;align-items:start}
+.gallery{display:grid;grid-template-columns:72px 1fr;gap:12px}
+.thumbs{display:flex;flex-direction:column;gap:8px}
+.thumbs button{border:1px solid transparent;border-radius:var(--r);overflow:hidden;opacity:.55;transition:opacity 160ms var(--ease)}
+.thumbs button.on{opacity:1;border-color:var(--ink-1)}
+.thumbs img{aspect-ratio:1;object-fit:cover;width:100%}
+.stage{overflow:hidden;border-radius:var(--r);background:var(--bg-2);cursor:zoom-in;position:relative}
+.stage img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 480ms var(--ease-expo)}
+.stage.zoom img{transform:scale(1.8)}
+.info{position:sticky;top:84px}
+.info h1{font-size:clamp(30px,3.4vw,44px);line-height:1.15;font-weight:300}
+.info .price-lg{font-family:var(--mono);font-size:18px;margin:14px 0 20px;display:flex;gap:10px;align-items:baseline}
+.info .desc{color:var(--ink-2);margin:0 0 24px;max-width:46ch}
+.opt{margin-bottom:18px}
+.opt .label{display:block;margin-bottom:8px}
+.opt .chips{flex-wrap:wrap;overflow:visible}
+.buy{display:grid;grid-template-columns:auto 1fr;gap:8px;margin-top:24px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--ink-1);border-radius:var(--r);height:48px}
+.qty button{width:40px;height:100%;font-size:16px}
+.qty span{min-width:28px;text-align:center;font-family:var(--mono);font-size:14px}
+.qty.sm{height:32px}.qty.sm button{width:28px}
+.ship-note{display:flex;gap:10px;margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+.acc{margin-top:28px}
+summary{list-style:none;cursor:pointer;padding:15px 0;display:flex;justify-content:space-between;font-size:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);transition:transform 160ms var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details .body{padding:0 0 16px;color:var(--ink-2);font-size:13.5px}
+details .body dl{display:grid;grid-template-columns:80px 1fr;gap:4px 12px;margin:0}
+details .body dt{color:var(--ink-3)}
+details .body dd{margin:0}
+@media (max-width:860px){
+  .pdp{grid-template-columns:1fr}
+  .info{position:static}
+  .gallery{grid-template-columns:1fr}
+  .thumbs{flex-direction:row;order:2}
+  .thumbs button{width:64px}
+}
+
+/* ── 장바구니 드로어 ── */
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(34,28,22,.36);opacity:0;pointer-events:none;transition:opacity 320ms var(--ease)}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(440px,100%);background:var(--bg);display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform 480ms var(--ease-expo),box-shadow 480ms var(--ease)}
+.drawer.open{transform:none;box-shadow:-20px 0 60px rgba(34,28,22,.08)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer-head h2{font-size:22px}
+.freebar{padding:14px 20px;border-bottom:1px solid var(--line-soft);font-size:12.5px;color:var(--ink-2)}
+.freebar .bar{height:2px;background:var(--line);margin-top:8px;overflow:hidden}
+.freebar .bar i{display:block;height:100%;background:var(--rust);transition:width 480ms var(--ease-expo)}
+.lines{flex:1;overflow-y:auto;padding:4px 20px}
+.line{display:grid;grid-template-columns:76px 1fr auto;gap:12px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
+.line img{width:76px;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.line .n{font-family:var(--serif);font-size:15px;line-height:1.35}
+.line .o{font-size:12px;color:var(--ink-3);margin:2px 0 10px}
+.line .right{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end}
+.line .rm{font-size:12px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px}
+.line .p{font-family:var(--mono);font-size:13px}
+.drawer-foot{padding:18px 20px calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:grid;gap:12px}
+.sum{display:flex;justify-content:space-between;align-items:baseline}
+.sum b{font-family:var(--mono);font-weight:400;font-size:18px}
+.drawer .empty{padding:60px 0}
+
+/* ── 결제 ── */
+.checkout{display:grid;grid-template-columns:1fr 400px;gap:clamp(24px,5vw,72px);padding:24px 0 96px;align-items:start}
+.checkout h1{font-size:clamp(32px,4vw,48px);font-weight:300;margin-bottom:8px}
+.demo{display:inline-block;font-size:12px;color:var(--rust);border:1px solid rgba(154,74,42,.4);padding:3px 8px;border-radius:var(--r);margin-bottom:24px}
+fieldset{border:0;padding:0;margin:0 0 32px}
+legend{font-family:var(--serif);font-size:20px;letter-spacing:-.02em;padding:0;margin-bottom:12px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fgrid .wide{grid-column:1/-1}
+.f{display:flex;flex-direction:column;gap:5px;min-width:0}
+.f label{font-size:12px;color:var(--ink-2)}
+.f input,.f select,.f textarea{min-width:0;width:100%;height:46px;border:1px solid var(--line);background:rgba(255,255,255,.35);border-radius:var(--r);padding:0 12px;font-size:15px;outline:0;transition:border-color 160ms var(--ease)}
+.f textarea{height:auto;padding:10px 12px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink-1)}
+.f input:user-invalid{border-color:#b3261e}
+.f .err{font-size:11.5px;color:#b3261e;display:none}
+.f input:user-invalid + .err{display:block}
+.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pay label{border:1px solid var(--line);border-radius:var(--r);padding:14px 12px;cursor:pointer;font-size:13.5px;display:flex;flex-direction:column;gap:2px;transition:border-color 160ms var(--ease)}
+.pay label small{font-size:11.5px;color:var(--ink-3)}
+.pay input{position:absolute;opacity:0}
+.pay label:has(input:checked){border-color:var(--ink-1);box-shadow:inset 0 0 0 1px var(--ink-1)}
+.agree{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--ink-2)}
+.agree input{margin-top:4px;accent-color:var(--rust)}
+.summary{position:sticky;top:84px;background:var(--bg-2);padding:24px;border-radius:var(--r)}
+.summary h2{font-size:20px;margin-bottom:8px}
+.summary .line{grid-template-columns:56px 1fr auto;padding:12px 0}
+.summary .line img{width:56px}
+.rows{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;display:grid;gap:6px;font-size:13.5px}
+.rows div{display:flex;justify-content:space-between}
+.rows span:last-child{font-family:var(--mono)}
+.rows .total{border-top:1px solid var(--ink-1);margin-top:8px;padding-top:12px;font-size:15px}
+.rows .total span:last-child{font-size:20px}
+@media (max-width:900px){.checkout{grid-template-columns:1fr}.summary{position:static;order:-1}}
+@media (max-width:480px){.fgrid{grid-template-columns:1fr}.pay{grid-template-columns:1fr}}
+
+.done{max-width:560px;margin:0 auto;padding:clamp(56px,10vw,120px) 0;text-align:center}
+.done h1{font-size:clamp(34px,5vw,56px);font-weight:300;line-height:1.2;margin:16px 0}
+.done .ono{font-family:var(--mono);font-size:14px;background:var(--bg-2);display:inline-block;padding:8px 14px;border-radius:var(--r);margin:8px 0 28px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:120;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:var(--ink-1);color:var(--bg);font-size:13.5px;padding:12px 18px;border-radius:var(--r);transition:all 320ms var(--ease-expo);max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="notice">5만원 이상 무료배송 · 모든 그릇은 주문 후 3~5일 안에 작업실에서 직접 포장해 보냅니다</div>
+<header class="top">
+  <div class="wrap">
+    <nav aria-label="주요 메뉴">
+      <a href="#/shop" data-nav="shop">전체 그릇</a>
+      <a href="#/shop?c=bowl" data-nav="bowl">공기·볼</a>
+      <a href="#/#story">작업실</a>
+    </nav>
+    <button class="icon-btn menu-btn" aria-label="메뉴 열기" onclick="toggleMenu(true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h16M4 16h16"/></svg></button>
+    <a class="logo" href="#/" aria-label="결 홈">결<small>GYEOL</small></a>
+    <div class="tools">
+      <button class="icon-btn" onclick="openCart()" aria-label="장바구니 열기"><span class="txt">장바구니</span><span class="count" id="cartCount" data-n="0">0</span></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <button class="icon-btn close" onclick="toggleMenu(false)" aria-label="메뉴 닫기">닫기</button>
+  <a href="#/shop" onclick="toggleMenu(false)">전체 그릇</a>
+  <a href="#/shop?c=bowl" onclick="toggleMenu(false)">공기·볼</a>
+  <a href="#/shop?c=plate" onclick="toggleMenu(false)">접시</a>
+  <a href="#/shop?c=tea" onclick="toggleMenu(false)">잔·다기</a>
+  <a href="#/shop?c=vase" onclick="toggleMenu(false)">항아리</a>
+  <a href="#/#story" onclick="toggleMenu(false)">작업실 이야기</a>
+</div>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <p class="big">결, 結.</p>
+    <div class="row">
+      <div><p>결 GYEOL 도예 작업실 · 대표 한소결</p><p>경기도 이천시 신둔면 도자예술로 (가상 주소)</p><p>사업자등록번호 000-00-00000 · 통신판매업 신고 제0000-경기이천-0000호</p></div>
+      <div><p>작업실 방문은 목·금 오후, 예약제로 엽니다</p><p>hello@gyeol.example · 031-000-0000</p><p>© 2026 GYEOL. 포트폴리오 예시 사이트입니다.</p></div>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="장바구니" aria-hidden="true">
+  <div class="drawer-head"><h2>장바구니</h2><button class="icon-btn" onclick="closeCart()">닫기</button></div>
+  <div class="freebar" id="freebar"></div>
+  <div class="lines" id="lines"></div>
+  <div class="drawer-foot" id="dfoot"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const FREE = 50000, SHIP = 3500;
+const CATS = {bowl:'공기·볼', plate:'접시', tea:'잔·다기', vase:'항아리'};
+const P = [
+  {id:'moon', name:'소담 달항아리', en:'Moon Jar, Small', cat:'vase', price:189000, img:'moon', tag:'한정 12점', rank:1,
+   desc:'백자토를 위아래 두 번 빚어 붙이는 옛 방식 그대로 만들었습니다. 이음매가 남긴 미세한 비대칭이 이 항아리의 얼굴입니다.',
+   opts:{'크기':['높이 18cm','높이 24cm (+60,000)']}, spec:{'소재':'백자토, 투명유','크기':'지름 17 · 높이 18cm','무게':'약 1.4kg','굽는 온도':'1,250℃ 환원'}},
+  {id:'bowl', name:'재유 공기 한 쌍', en:'Ash Glaze Rice Bowls', cat:'bowl', price:38000, img:'bowls', tag:'베스트', rank:2,
+   desc:'소나무 재를 걸러 만든 유약이 가마 속에서 흘러내린 자국이 두 그릇마다 다르게 남습니다. 밥 한 공기가 넉넉히 담기는 크기.',
+   opts:{'구성':['2개 한 쌍','4개 세트 (+36,000)']}, spec:{'소재':'옹기토, 재유','크기':'지름 12 · 높이 6.5cm','용량':'350ml','전자레인지':'사용 가능'}},
+  {id:'plate', name:'모래결 접시 26', en:'Speckled Dinner Plate', cat:'plate', price:34000, img:'plate', rank:3,
+   desc:'철분 알갱이가 섞인 흙을 써서 표면에 모래처럼 점이 번집니다. 매일 쓰는 큰 접시로, 파스타와 한 상 차림 모두 받아줍니다.',
+   opts:{'지름':['26cm','21cm (-8,000)']}, spec:{'소재':'산청토, 무광 백유','크기':'지름 26 · 높이 2.8cm','식기세척기':'사용 가능','전자레인지':'사용 가능'}},
+  {id:'cup', name:'청연 찻잔', en:'Celadon Teacup', cat:'tea', price:24000, img:'cup', rank:4,
+   desc:'맑은 비색 청자유를 두껍게 입혀 잔 안쪽에 물빛이 고입니다. 손에 쥐면 엄지가 편히 걸리도록 굽을 조금 높였습니다.',
+   opts:{'유약':['청자유','백자유']}, spec:{'소재':'백자토, 청자유','크기':'지름 8 · 높이 6cm','용량':'120ml','전자레인지':'사용 가능'}},
+  {id:'pitcher', name:'먹빛 물병', en:'Charcoal Pitcher', cat:'tea', price:72000, img:'pitcher', tag:'신작', rank:5,
+   desc:'먹을 갈아 놓은 듯한 무광 흑유 물병. 주둥이를 손으로 한 번 눌러 빚어 물이 흘러내리지 않고 끊깁니다.',
+   opts:{}, spec:{'소재':'옹기토, 무광 흑유','크기':'지름 11 · 높이 21cm','용량':'900ml','주의':'직화 사용 불가'}},
+  {id:'serve', name:'분청 귀얄 큰볼', en:'Buncheong Serving Bowl', cat:'bowl', price:64000, img:'serve', rank:6, soldout:true,
+   desc:'귀얄 붓으로 백토를 한 번에 쓸어 바른 분청 볼. 붓질의 속도가 그대로 무늬가 되어 같은 그릇이 하나도 없습니다.',
+   opts:{}, spec:{'소재':'분청토, 백토 귀얄','크기':'지름 28 · 높이 9cm','식기세척기':'권장하지 않음','입고':'10월 셋째 주 가마'}},
+];
+const byId = id => P.find(p => p.id === id);
+const won = n => n.toLocaleString('ko-KR');
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ── 장바구니 (브라우저에만 저장) ── */
+const KEY = 'gyeol-cart';
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch { cart = []; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch {} renderCart(); };
+// 옵션 라벨의 (+60,000) 표기를 가격에 반영
+const optDelta = o => Object.values(o || {}).reduce((s, v) => { const m = /\(([+-])([\d,]+)\)/.exec(v); return s + (m ? (m[1] === '-' ? -1 : 1) * +m[2].replace(/,/g, '') : 0); }, 0);
+const unit = l => byId(l.id).price + optDelta(l.opt);
+const subtotal = () => cart.reduce((s, l) => s + unit(l) * l.q, 0);
+const shipping = () => (cart.length && subtotal() < FREE ? SHIP : 0);
+function add(id, opt = {}, q = 1) {
+  const p = byId(id); if (!p || p.soldout) return;
+  const key = id + JSON.stringify(opt);
+  const hit = cart.find(l => l.key === key);
+  hit ? (hit.q = Math.min(hit.q + q, 9)) : cart.push({key, id, opt, q});
+  save(); bump(); toast(`${p.name}을(를) 장바구니에 담았어요`);
+}
+const setQ = (key, d) => { const l = cart.find(x => x.key === key); if (!l) return; l.q = Math.max(1, Math.min(9, l.q + d)); save(); };
+const remove = key => { cart = cart.filter(l => l.key !== key); save(); };
+const optText = o => Object.values(o || {}).map(v => v.replace(/\s*\(.*\)/, '')).join(' · ');
+
+function lineHTML(l, editable) {
+  const p = byId(l.id);
+  return `<div class="line"><a href="#/p/${p.id}" onclick="closeCart()"><img src="img/${p.img}.jpg" alt=""></a>
+    <div><div class="n">${p.name}</div><div class="o">${optText(l.opt) || '기본'}${editable ? '' : ' · ' + l.q + '개'}</div>
+    ${editable ? `<div class="qty sm"><button aria-label="수량 빼기" onclick="setQ('${esc(l.key)}',-1)">−</button><span>${l.q}</span><button aria-label="수량 더하기" onclick="setQ('${esc(l.key)}',1)">+</button></div>` : ''}</div>
+    <div class="right"><span class="p won">${won(unit(l) * l.q)}</span>${editable ? `<button class="rm" onclick="remove('${esc(l.key)}')">삭제</button>` : ''}</div></div>`;
+}
+function renderCart() {
+  const n = cart.reduce((s, l) => s + l.q, 0), sub = subtotal();
+  $('#cartCount').textContent = n; $('#cartCount').dataset.n = n;
+  const left = FREE - sub;
+  $('#freebar').innerHTML = (sub >= FREE ? '무료배송이 적용됐어요' : `<b class="won">${won(left)}</b> 더 담으면 무료배송`) + `<div class="bar"><i style="width:${Math.min(100, sub / FREE * 100)}%"></i></div>`;
+  $('#lines').innerHTML = cart.length ? cart.map(l => lineHTML(l, true)).join('') : `<div class="empty"><p class="serif" style="font-size:20px;color:var(--ink-1)">아직 비어 있어요</p><p>식탁에 올릴 그릇을 골라보세요</p><a class="btn ghost" href="#/shop" onclick="closeCart()">그릇 보러 가기</a></div>`;
+  $('#dfoot').innerHTML = cart.length ? `<div class="sum"><span>상품 합계</span><b class="won">${won(sub)}</b></div><a class="btn dark full" href="#/checkout" onclick="closeCart()">주문하기</a>` : '';
+  if (location.hash.startsWith('#/checkout')) renderSummary();
+}
+function openCart() { $('#drawer').classList.add('open'); $('#scrim').classList.add('open'); $('#drawer').setAttribute('aria-hidden', 'false'); document.body.classList.add('lock'); }
+function closeCart() { $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); document.body.classList.remove('lock'); }
+function toggleMenu(o) { $('#mnav').classList.toggle('open', o); $('#mnav').setAttribute('aria-hidden', !o); document.body.classList.toggle('lock', o); }
+function bump() { const c = $('#cartCount'); c.animate([{transform:'scale(1)'},{transform:'scale(1.35)'},{transform:'scale(1)'}], {duration:320, easing:'cubic-bezier(.175,.885,.32,1.1)'}); }
+let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2200); }
+addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); toggleMenu(false); } });
+
+/* ── 뷰 ── */
+function card(p) {
+  return `<a class="card rv" href="#/p/${p.id}">
+    <div class="ph"><img src="img/${p.img}.jpg" alt="${p.name}" loading="lazy">
+      ${p.soldout ? '<span class="tag soldout">다음 가마 대기</span>' : p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+      ${p.soldout ? '' : `<button class="quick" onclick="event.preventDefault();add('${p.id}', defaults('${p.id}'))">바로 담기</button>`}</div>
+    <div class="meta"><div><div class="name">${p.name}</div><div class="sub en">${p.en}</div></div><div class="price won">${won(p.price)}</div></div></a>`;
+}
+const defaults = id => Object.fromEntries(Object.entries(byId(id).opts).map(([k, v]) => [k, v[0]]));
+
+function home() {
+  const [a, b, c] = [byId('moon'), byId('bowl'), byId('cup')];
+  return `<div class="wrap">
+    <div class="mast"><span class="label">가을 가마 · 9월</span><span class="label">경기 이천 작업실</span></div>
+    <section class="hero">
+      <div>
+        <p class="label">이번 계절의 식탁</p>
+        <h1>흙의 <em>결</em>을<br>식탁 위에</h1>
+        <p class="lede">이천 작업실에서 한 사람이 물레를 돌려 빚고, 한 달에 한 번 가마를 엽니다. 매일 손이 가는 그릇만 만듭니다.</p>
+        <div class="cta"><a class="btn dark" href="#/shop">가을 가마 둘러보기</a><a class="btn ghost" href="#/#story">작업실 이야기</a></div>
+      </div>
+      <figure><img src="img/hero.jpg" alt="린넨 식탁 위에 놓인 결의 공기, 접시, 달항아리" fetchpriority="high">
+        <figcaption><span class="label">아침 아홉 시의 식탁</span><span class="label">사진 · AI 생성 예시</span></figcaption></figure>
+    </section>
+  </div>
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><h2>이번 호의 그릇</h2><a href="#/shop">전체 보기 →</a></div>
+    <div class="feature">${card(a)}${card(b)}${card(c)}
+      <blockquote class="quote rv">“그릇은 음식이 올라가야 완성됩니다. 그래서 비워뒀을 때 조금 심심할 정도로 만들어요.”<cite class="label">— 도예가 한소결</cite></blockquote>
+    </div>
+  </div></section>
+  <section class="sec" id="story"><div class="wrap story">
+    <img class="rv" src="img/studio.jpg" alt="물레 위에서 흙을 빚는 손" loading="lazy">
+    <div class="rv">
+      <p class="label">작업실 이야기</p>
+      <h2>한 달에 한 번,<br>가마를 엽니다</h2>
+      <div class="cols">
+        <p>결은 이천 신둔면의 작은 작업실입니다. 흙을 반죽하고, 물레를 돌리고, 말리고, 두 번 굽는 모든 과정을 한 사람이 합니다. 그래서 한 번에 많이 만들지 못합니다.</p>
+        <p>대신 약속할 수 있는 게 있습니다. 가마에서 꺼낸 그릇은 하나씩 손으로 쓸어보고, 굽이 흔들리거나 유약이 뭉친 것은 팔지 않습니다. 매 가마마다 열에 두셋은 깨서 흙으로 돌려보냅니다.</p>
+      </div>
+      <div class="facts"><div><b>1,250℃</b><span class="label">환원 소성</span></div><div><b>2번</b><span class="label">초벌 · 재벌</span></div><div><b>12년</b><span class="label">물레 앞에서</span></div></div>
+    </div>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><h2>그릇을 오래 쓰는 법</h2><span></span></div>
+    <div class="care rv">
+      <div><span class="label">첫 사용</span><h3>쌀뜨물에 삶기</h3><p>처음 받으신 그릇은 쌀뜨물에 20분 삶아 두면 미세한 기공이 메워져 얼룩이 덜 스밉니다.</p></div>
+      <div><span class="label">세척</span><h3>부드러운 스펀지</h3><p>철수세미는 유약 표면에 잔 흠집을 남깁니다. 중성세제와 부드러운 스펀지면 충분해요.</p></div>
+      <div><span class="label">건조</span><h3>굽까지 말리기</h3><p>유약이 없는 굽은 물을 머금습니다. 엎어서 하룻밤 말린 뒤 포개어 두세요.</p></div>
+      <div><span class="label">온도</span><h3>급냉·급열 피하기</h3><p>냉장고에서 꺼낸 그릇을 바로 오븐에 넣으면 금이 갈 수 있습니다.</p></div>
+    </div>
+    <div class="letter">
+      <h2>다음 가마가 열리는 날,<br>먼저 알려드릴게요</h2>
+      <form onsubmit="event.preventDefault();this.reset();toast('구독 신청이 접수됐어요 (예시 사이트)')">
+        <label class="label" for="nl">가마 소식 받기 · 한 달에 한 통</label>
+        <div class="field-row"><input id="nl" type="email" required placeholder="이메일 주소" autocomplete="email"><button class="label" style="color:var(--ink-1)">구독 →</button></div>
+      </form>
+    </div>
+  </div></section>`;
+}
+
+function shop(q) {
+  const c = q.get('c') || 'all', s = q.get('s') || 'rank';
+  let list = P.filter(p => c === 'all' || p.cat === c);
+  list = [...list].sort({rank:(x, y) => x.rank - y.rank, low:(x, y) => x.price - y.price, high:(x, y) => y.price - x.price}[s]);
+  const chip = (k, t) => `<button class="chip ${c === k ? 'on' : ''}" onclick="go({c:'${k}'})">${t}<sup>${k === 'all' ? P.length : P.filter(p => p.cat === k).length}</sup></button>`;
+  return `<div class="wrap">
+    <div class="page-head"><p class="label">가을 가마에서 나온 그릇</p><h1>${c === 'all' ? '전체 그릇' : CATS[c]}</h1></div>
+    <div class="toolbar"><div class="chips">${chip('all', '전체')}${Object.entries(CATS).map(([k, t]) => chip(k, t)).join('')}</div>
+      <label class="sr" for="sort">정렬</label>
+      <select class="sort" id="sort" onchange="go({s:this.value})">
+        <option value="rank" ${s === 'rank' ? 'selected' : ''}>추천순</option><option value="low" ${s === 'low' ? 'selected' : ''}>낮은 가격순</option><option value="high" ${s === 'high' ? 'selected' : ''}>높은 가격순</option>
+      </select></div>
+    ${list.length ? `<div class="grid">${list.map(card).join('')}</div>` : '<p class="empty">이 분류의 그릇은 다음 가마에서 나옵니다</p>'}
+  </div>`;
+}
+function go(patch) {
+  const q = new URLSearchParams(location.hash.split('?')[1] || '');
+  Object.entries(patch).forEach(([k, v]) => (v === 'all' ? q.delete(k) : q.set(k, v)));
+  location.hash = '#/shop' + (q.toString() ? '?' + q : '');
+}
+
+let sel = {}, qty = 1;
+function pdp(id) {
+  const p = byId(id); if (!p) return `<div class="wrap empty"><p>찾는 그릇이 없어요</p><a class="btn ghost" href="#/shop">목록으로</a></div>`;
+  sel = defaults(id); qty = 1;
+  // 한 장의 사진을 다른 프레이밍으로 보여주는 썸네일
+  const views = [['50% 50%', 1], ['30% 35%', 1.6], ['70% 70%', 1.9]];
+  const related = P.filter(x => x.id !== id && !x.soldout).slice(0, 3);
+  return `<div class="wrap">
+    <div class="crumb"><a href="#/">홈</a> / <a href="#/shop?c=${p.cat}">${CATS[p.cat]}</a> / ${p.name}</div>
+    <div class="pdp">
+      <div class="gallery">
+        <div class="thumbs">${views.map((v, i) => `<button class="${i ? '' : 'on'}" aria-label="사진 ${i + 1}" onclick="view(this,'${v[0]}',${v[1]})"><img src="img/${p.img}.jpg" alt="" style="object-position:${v[0]};transform:scale(${v[1]})"></button>`).join('')}</div>
+        <div class="stage" id="stage" onclick="this.classList.toggle('zoom')" onmousemove="pan(event)"><img id="stageImg" src="img/${p.img}.jpg" alt="${p.name}"></div>
+      </div>
+      <div class="info">
+        <p class="label">${CATS[p.cat]} · ${p.en}</p>
+        <h1>${p.name}</h1>
+        <div class="price-lg"><span class="won" id="pp">${won(p.price)}</span>${p.tag ? `<span class="label" style="color:var(--rust)">${p.tag}</span>` : ''}</div>
+        <p class="desc">${p.desc}</p>
+        ${Object.entries(p.opts).map(([k, vs]) => `<div class="opt"><span class="label">${k}</span><div class="chips" role="radiogroup">${vs.map((v, i) => `<button class="chip ${i ? '' : 'on'}" role="radio" aria-checked="${!i}" onclick="pick(this,'${k}','${v}')">${v}</button>`).join('')}</div></div>`).join('')}
+        ${p.soldout ? `<button class="btn dark full" disabled>다음 가마 대기 중 · ${p.spec['입고']}</button>`
+          : `<div class="buy"><div class="qty"><button aria-label="수량 빼기" onclick="chQty(-1)">−</button><span id="qn">1</span><button aria-label="수량 더하기" onclick="chQty(1)">+</button></div>
+             <button class="btn dark" onclick="add('${p.id}',{...sel},qty);openCart()">장바구니에 담기</button></div>`}
+        <div class="ship-note"><span>● 3~5일 내 발송</span><span>● 5만원 이상 무료배송</span></div>
+        <div class="acc">
+          <details open><summary>소재와 크기</summary><div class="body"><dl>${Object.entries(p.spec).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></details>
+          <details><summary>손으로 만든 그릇이라서</summary><div class="body">유약의 흐름, 작은 철점, 굽의 물레 자국은 불량이 아니라 수작업의 흔적입니다. 사진과 색·크기가 조금씩 다를 수 있어요.</div></details>
+          <details><summary>배송 · 교환 · 반품</summary><div class="body">완충재 세 겹으로 포장해 CJ대한통운으로 보냅니다. 배송 중 파손은 사진을 보내주시면 새 그릇으로 바꿔드려요. 단순 변심 반품은 수령 후 7일 이내, 왕복 배송비 7,000원.</div></details>
+        </div>
+      </div>
+    </div>
+    <section class="sec"><div class="sec-head"><h2>함께 차리기</h2><a href="#/shop">전체 보기 →</a></div>
+      <div class="grid" style="padding-top:0">${related.map(card).join('')}</div></section>
+  </div>`;
+}
+function view(btn, pos, sc) {
+  document.querySelectorAll('.thumbs button').forEach(b => b.classList.toggle('on', b === btn));
+  const i = $('#stageImg'); i.style.objectPosition = pos; i.style.transform = `scale(${sc})`; $('#stage').classList.remove('zoom');
+}
+function pan(e) { const s = e.currentTarget; if (!s.classList.contains('zoom')) return; const r = s.getBoundingClientRect(); s.firstElementChild.style.transformOrigin = `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`; }
+function pick(btn, k, v) {
+  btn.parentElement.querySelectorAll('.chip').forEach(b => { b.classList.toggle('on', b === btn); b.setAttribute('aria-checked', b === btn); });
+  sel[k] = v; const id = location.hash.split('/')[2];
+  $('#pp').textContent = won(byId(id).price + optDelta(sel));
+}
+function chQty(d) { qty = Math.max(1, Math.min(9, qty + d)); $('#qn').textContent = qty; }
+
+function checkout() {
+  if (!cart.length) return `<div class="wrap done"><h1>장바구니가 비어 있어요</h1><a class="btn dark" href="#/shop">그릇 보러 가기</a></div>`;
+  return `<div class="wrap"><div class="crumb"><a href="#/">홈</a> / 주문서</div>
+  <div class="checkout">
+    <form id="order" novalidate onsubmit="placeOrder(event)">
+      <h1>주문서</h1><span class="demo">예시 사이트 — 실제 결제는 이뤄지지 않습니다</span>
+      <fieldset><legend>받는 분</legend><div class="fgrid">
+        <div class="f"><label for="nm">이름</label><input id="nm" required autocomplete="name"><span class="err">이름을 적어주세요</span></div>
+        <div class="f"><label for="ph">휴대폰</label><input id="ph" required type="tel" inputmode="tel" pattern="01[0-9]-?[0-9]{3,4}-?[0-9]{4}" placeholder="010-0000-0000" autocomplete="tel"><span class="err">010-0000-0000 형식으로 적어주세요</span></div>
+        <div class="f wide"><label for="ad">주소</label><input id="ad" required autocomplete="street-address" placeholder="도로명 주소"><span class="err">주소를 적어주세요</span></div>
+        <div class="f wide"><label for="ad2">상세 주소</label><input id="ad2" autocomplete="address-line2" placeholder="동·호수"></div>
+        <div class="f wide"><label for="memo">배송 메모</label><select id="memo"><option>문 앞에 두고 가주세요</option><option>경비실에 맡겨주세요</option><option>배송 전 연락 부탁드려요</option></select></div>
+      </div></fieldset>
+      <fieldset><legend>결제 수단</legend><div class="pay">
+        <label><input type="radio" name="pay" value="카드" checked>신용·체크카드<small>무이자 3개월</small></label>
+        <label><input type="radio" name="pay" value="토스페이">토스페이<small>간편결제</small></label>
+        <label><input type="radio" name="pay" value="무통장">무통장 입금<small>24시간 내 입금</small></label>
+      </div></fieldset>
+      <label class="agree"><input type="checkbox" required id="ok">주문 내용과 수작업 그릇의 특성(색·크기 편차)을 확인했으며 결제에 동의합니다</label>
+      <button class="btn dark full" style="margin-top:20px" id="payBtn"></button>
+    </form>
+    <aside class="summary" id="summary"></aside>
+  </div></div>`;
+}
+function renderSummary() {
+  const s = $('#summary'); if (!s) return;
+  const sub = subtotal(), sh = shipping();
+  s.innerHTML = `<h2>주문 상품 ${cart.reduce((a, l) => a + l.q, 0)}개</h2>${cart.map(l => lineHTML(l, false)).join('')}
+    <div class="rows"><div><span>상품 합계</span><span class="won">${won(sub)}</span></div><div><span>배송비</span><span>${sh ? won(sh) + '원' : '무료'}</span></div>
+    <div class="total"><span>결제 금액</span><span class="won">${won(sub + sh)}</span></div></div>`;
+  const b = $('#payBtn'); if (b) b.textContent = `${won(sub + sh)}원 결제하기`;
+}
+function placeOrder(e) {
+  e.preventDefault(); const f = e.target;
+  if (!f.checkValidity()) { f.querySelectorAll('input').forEach(i => i.dispatchEvent(new Event('blur'))); const bad = f.querySelector(':invalid'); bad.focus(); toast(bad.id === 'ok' ? '결제 동의에 체크해 주세요' : '입력 내용을 확인해 주세요'); return; }
+  const no = 'GY' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  const total = subtotal() + shipping(), name = $('#nm').value, pay = f.pay.value;
+  cart = []; save();
+  try { sessionStorage.setItem('gyeol-last', JSON.stringify({no, total, name, pay})); } catch {}
+  location.hash = '#/done';
+}
+function done() {
+  let o = null; try { o = JSON.parse(sessionStorage.getItem('gyeol-last')); } catch {}
+  if (!o) return `<div class="wrap done"><h1>확인할 주문이 없어요</h1><a class="btn dark" href="#/">처음으로</a></div>`;
+  return `<div class="wrap done"><p class="label">주문 완료</p><h1>${esc(o.name)}님,<br>주문이 접수됐어요</h1>
+    <p style="color:var(--ink-2)">다음 가마 포장일에 맞춰 3~5일 안에 보내드릴게요.<br>${o.pay} · ${won(o.total)}원 (예시 사이트라 실제 결제되지 않았습니다)</p>
+    <div class="ono">주문번호 ${o.no}</div><br><a class="btn ghost" href="#/shop">계속 둘러보기</a></div>`;
+}
+
+/* ── 라우터 ── */
+let io;
+function route() {
+  closeCart(); if (window.toggleMenu) toggleMenu(false);
+  const [path, qs] = location.hash.slice(1).split('?');
+  const q = new URLSearchParams(qs || ''), seg = (path || '/').split('/').filter(Boolean);
+  const html = !seg.length ? home() : seg[0] === 'shop' ? shop(q) : seg[0] === 'p' ? pdp(seg[1]) : seg[0] === 'checkout' ? checkout() : seg[0] === 'done' ? done() : home();
+  $('#app').innerHTML = `<div class="view">${html}</div>`;
+  document.querySelectorAll('[data-nav]').forEach(a => a.classList.toggle('on', (seg[0] === 'shop' && (q.get('c') || 'shop') === a.dataset.nav)));
+  const p = seg[0] === 'p' && byId(seg[1]);
+  document.title = p ? `${p.name} — 결 GYEOL` : seg[0] === 'shop' ? '그릇 — 결 GYEOL' : seg[0] === 'checkout' ? '주문서 — 결 GYEOL' : '결 GYEOL — 손으로 빚은 식탁';
+  renderSummary();
+  io?.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // "#/#story" 같은 섹션 링크
+  const anchor = location.hash.split('#')[2];
+  anchor ? requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({behavior:'smooth'})) : scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+renderCart(); route();
+</script>
+</body>
+</html>
