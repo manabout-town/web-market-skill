@@ -7,12 +7,20 @@
 - 품목별 "심장 기능" 설계표: 한정 수량, 소리 듣기, 루틴 찾기, 세트 할인, 정기배송 …
 - 바로 도는 스타터(가상 도자기몰 + 사진 8장)와 playwright 검증 스크립트 포함
 
-## 설치
+## 설치 (한 줄)
+```bash
+curl -fsSL https://raw.githubusercontent.com/manabout-town/web-market-skill/main/install.sh | bash
+```
+`~/.claude/skills/web-market` 에 설치된다. Claude Code를 새로 열고 "향수 브랜드 웹마켓 만들어줘"처럼 말하면 된다.
+설치 위치를 바꾸려면 `CLAUDE_SKILLS_DIR=... curl ... | bash`.
+
+<details><summary>레포를 통째로 받고 싶다면</summary>
+
 ```bash
 git clone https://github.com/manabout-town/web-market-skill.git
-cd web-market-skill && ./install.sh     # → ~/.claude/skills/web-market
+cd web-market-skill && ./install.sh
 ```
-그다음 Claude Code에서 "향수 브랜드 웹마켓 만들어줘"처럼 말하면 된다.
+</details>
 
 ## 구성
 ```
